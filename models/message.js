@@ -9,9 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     channel: {
       type: DataTypes.STRING,
       allowNull: false 
-    }
+    },
     ts: {
-      type: DataTypes.TIMESTAMP,
+      type: DataTypes.DATE,
       allowNull: false
     }
   },

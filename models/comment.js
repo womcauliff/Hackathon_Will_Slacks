@@ -1,4 +1,5 @@
-var Comment = sequelize.define("Comment",
+module.exports = function(sequelize, DataTypes) {
+  var Comment = sequelize.define("Comment",
   //model definition
   {
     username: {
@@ -21,6 +22,6 @@ var Comment = sequelize.define("Comment",
         });
       }
     }
-  }
-);
-return Comment;
+  });
+  return Comment;
+};
