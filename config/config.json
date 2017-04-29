@@ -1,9 +1,10 @@
 {
   "development": {
     "username": "root",
-    "password": "Atlanta@10",
-    "database": "database_development",
+    "password": "root",
+    "database": "wwwisdom",
     "host": "127.0.0.1",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
@@ -14,10 +15,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "database": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }

@@ -1,18 +1,24 @@
 {
-  "name": "will_slacks",
+  "name": "wwwisdom",
   "version": "1.0.0",
-  "description": "",
+  "description": "Collects all of Will's Words of Wisdom in one place.",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  "repository": {
+    "url": "https://github.com/womcauliff/Hackathon_Will_Slacks.git",
+    "type": "git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Will McAuliff <womcauliff@gmail.com> (https://github.com/womcauliff)"
+  ],
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "method-override": "^2.3.8",
+    "morgan": "^1.8.1",
     "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^2.7.0"
   }
 }
