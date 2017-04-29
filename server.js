@@ -22,6 +22,9 @@ app.use(express.static(process.cwd() + '/public'));
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
+// Prepare Tables
+var db = require("./models");
+
 // Listening
 db.sequelize.sync({ force: true }).then(function() {
 	app.listen(app.get('port'), function() {

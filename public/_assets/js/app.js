@@ -1,3 +1,3 @@
-$(document).ready(
-	console.log("document ready");
-);
+$(document).ready(function() {
+	console.log("ready");
+});
