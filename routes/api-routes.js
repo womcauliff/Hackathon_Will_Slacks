@@ -19,10 +19,6 @@ module.exports = function(app) {
   // GET route for getting all of will's comments
   app.post("/api/slack", function(request, response) {
     console.log(request.body);
-    // findAll returns all entries for a table when used with no options
-    // db.Todo.findAll({}).then(function(dbTodo) {
-    //   // We have access to the todos as an argument inside of the callback function
-    response.json({"challenge": request.body.challenge});
     });
   };
 
