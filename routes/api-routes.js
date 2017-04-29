@@ -6,33 +6,32 @@
 // =============================================================
 
 // Requiring our models
-//var db = require("../models");
-
-//listen to slack
-
-
+var db = require("../models");
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of will's comments
-  app.post("/api/slack", function(request, response) {
-    console.log(request.body);
-    });
-  };
+  //POST route for slack events
+  app.post("/api/slack", function(req, res) {
 
-  // POST route for saving a new message
-//   app.post("/api/todos", function(req, res) {
-//     // create takes an argument of an object describing the item we want to
-//     // insert into our table. In this case we just we pass in an object with a text
-//     // and complete property (req.body)
-//     db.Todo.create({
-//       text: req.body.text,
-//       complete: req.body.complete
-//     }).then(function(dbTodo) {
-//       // We have access to the new todo as an argument inside of the callback function
-//       res.json(dbTodo);
-//     });
-//   });
-// };
+  	//checks verification token to confirm message is from Slack
+  	if(req.body.token !== process.env.SLACK_TOKEN) {
+  		console.log("Token mismatch.");
+  		return res.status(403).send("Token mismatch.");
+  	}
+    console.log(req.body);
+
+    //checks that a message was written by the target user
+    if(req.body.event.type == "message" &&
+    req.body.event.user == process.env.TARGET_ID) {
+    	db.Message.create({
+    		text: req.body.event.text,
+    		channel: req.body.event.channel,
+    		ts: req.body.event.ts
+    	}).then(function(dbMessage) {
+    		console.log("added: " + JSON.stringify(dbMessage));
+    	});
+    }
+  });
+};
