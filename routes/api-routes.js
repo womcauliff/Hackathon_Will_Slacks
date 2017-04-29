@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   	//checks verification token to confirm message is from Slack
   	if(req.body.token !== process.env.SLACK_TOKEN) {
-  		console.log("Token mismatch.");
+  		console.log("Token mismatch: " + req.body.token);
   		return res.status(403).send("Token mismatch.");
   	}
     console.log(req.body);
