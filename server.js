@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 	extended: 5000
 }));// Parse application/x-www-form-urlencoded
 app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(methodOverride('_method'));// override with POST having ?_method=DELETE
 
