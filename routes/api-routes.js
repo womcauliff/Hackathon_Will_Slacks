@@ -7,6 +7,7 @@
 
 // Requiring our models
 var db = require("../models");
+var moment = require("moment");
 
 // Routes
 // =============================================================
@@ -26,10 +27,13 @@ module.exports = function(app) {
     //checks that a message was written by the target user
 	  if(req.body.event.type == "message" &&
     req.body.event.user == process.env.TARGET_ID) {
+      //makes UNIX Epoch compatible with MySQL DATE
+      var dateTime = moment.utc(parseInt(req.body.event_time) * 1000);
+
 			db.Message.create({
 				text: req.body.event.text,
 				channel: req.body.event.channel,
-				ts: req.body.event_time
+				ts: dateTime
 			}).then(function(dbMessage) {
 				console.log("added: " + JSON.stringify(dbMessage));
 				res.status(200).send("ok");
