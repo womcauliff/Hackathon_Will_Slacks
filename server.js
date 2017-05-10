@@ -26,7 +26,7 @@ require("./routes/api-routes.js")(app);
 var db = require("./models");
 
 // Listening
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
 	app.listen(app.get('port'), function() {
 	  console.log("Express server listening on port %d in %s mode", 
 	  this.address().port, app.settings.env);
